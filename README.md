@@ -14,7 +14,7 @@ A tool that helps extract and separate content from PDF files based on predefine
 
 ---
 
-## 📖 Introduction
+## Introduction
 
 This project is a tool designed to extract and separate content from PDF files based on user-defined settings. It allows users to configure how content should be split, and supports batch processing — enabling multiple PDF files to be processed at the same time.
 
@@ -22,7 +22,7 @@ It is especially useful in workflows where large volumes of documents need to be
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 List any required software or tools:
 
@@ -30,14 +30,14 @@ List any required software or tools:
 
 ---
 
-## 🛠 Installation
+## Installation
 
 Download the .exe file from the v1.0.0 release and run it directly — no installation is required.
 
 ⚠️ If Windows shows a security warning, right-click the file → select Properties → check Unblock, then click OK.
 Make sure you have permission to access the folders you plan to process.
 
-## 🚀 Usage
+## Usage
 
 ### 🔘 Button Overview
 
@@ -106,7 +106,7 @@ Click the **⑥ Clear** button to remove all displayed results and reset the int
 
 ---
 
-## 📄 License
+## License
 Tool PDF is licensed under the MIT License.
 
 This means you are free to use, modify, and distribute this software for any purpose, as long as the original license and copyright notice are included.
