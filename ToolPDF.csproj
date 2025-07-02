@@ -6,14 +6,35 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Properties\Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove=".gitignore" />
+    <None Remove="Properties\Resources\icon_clear_16x16.png" />
+    <None Remove="Properties\Resources\icon_copy_16x16.png" />
+    <None Remove="Properties\Resources\icon_execute_16x16.png" />
+    <None Remove="Properties\Resources\icon_reload_16x16.png" />
+    <None Remove="Properties\Resources\icon_save_16x16.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources\icon_folder_16x16.png" />
+    <Resource Include="Properties\Resources\icon_clear_16x16.png" />
+    <Resource Include="Properties\Resources\icon_copy_16x16.png" />
+    <Resource Include="Properties\Resources\icon_reload_16x16.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Properties\Resources\icon_execute_16x16.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Properties\Resources\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Properties\Resources\icon_folder_16x16.png" />
+    <Resource Include="Properties\Resources\icon_save_16x16.png" />
   </ItemGroup>
 
   <ItemGroup>

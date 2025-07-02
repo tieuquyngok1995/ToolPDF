@@ -1,4 +1,6 @@
-﻿namespace ToolPDF
+﻿using System.Windows.Forms;
+
+namespace ToolPDF
 {
     partial class Main
     {
@@ -29,9 +31,14 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             groupSetting = new GroupBox();
+            btnSave = new Button();
             dataGridViewSetting = new DataGridView();
-            findText = new DataGridViewTextBoxColumn();
+            searchKey = new DataGridViewTextBoxColumn();
+            endKey = new DataGridViewTextBoxColumn();
             type = new DataGridViewComboBoxColumn();
             btnDataSeparation = new Button();
             btnReload = new Button();
@@ -39,8 +46,11 @@
             txtPathFolder = new TextBox();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            lblNumFile = new Label();
             txtListFile = new RichTextBox();
             groupBox2 = new GroupBox();
+            btnClear = new Button();
+            btnCopy = new Button();
             txtResult = new RichTextBox();
             groupSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSetting).BeginInit();
@@ -50,6 +60,7 @@
             // 
             // groupSetting
             // 
+            groupSetting.Controls.Add(btnSave);
             groupSetting.Controls.Add(dataGridViewSetting);
             groupSetting.Controls.Add(btnDataSeparation);
             groupSetting.Controls.Add(btnReload);
@@ -59,14 +70,26 @@
             groupSetting.Font = new Font("Verdana", 10F);
             groupSetting.Location = new Point(9, 1);
             groupSetting.Name = "groupSetting";
-            groupSetting.Size = new Size(563, 229);
+            groupSetting.Size = new Size(460, 188);
             groupSetting.TabIndex = 0;
             groupSetting.TabStop = false;
             groupSetting.Text = "Input Setting";
             // 
+            // btnSave
+            // 
+            btnSave.Image = Properties.Resources.icon_save_16x16;
+            btnSave.Location = new Point(399, 19);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(24, 24);
+            btnSave.TabIndex = 6;
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
             // dataGridViewSetting
             // 
             dataGridViewSetting.AllowUserToResizeRows = false;
+            dataGridViewSetting.BackgroundColor = SystemColors.Control;
+            dataGridViewSetting.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Verdana", 10F);
@@ -77,33 +100,54 @@
             dataGridViewSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewSetting.ColumnHeadersHeight = 24;
             dataGridViewSetting.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewSetting.Columns.AddRange(new DataGridViewColumn[] { findText, type });
-            dataGridViewSetting.Location = new Point(13, 67);
+            dataGridViewSetting.Columns.AddRange(new DataGridViewColumn[] { searchKey, endKey, type });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 10F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewSetting.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewSetting.Location = new Point(10, 51);
             dataGridViewSetting.MultiSelect = false;
             dataGridViewSetting.Name = "dataGridViewSetting";
+            dataGridViewSetting.RowHeadersWidth = 27;
             dataGridViewSetting.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewSetting.Size = new Size(474, 126);
+            dataGridViewSetting.ScrollBars = ScrollBars.Vertical;
+            dataGridViewSetting.ShowCellToolTips = false;
+            dataGridViewSetting.Size = new Size(440, 126);
             dataGridViewSetting.TabIndex = 5;
+            dataGridViewSetting.RowsAdded += dataGridViewSetting_RowsAdded;
             // 
-            // findText
+            // searchKey
             // 
-            findText.HeaderText = "Find Text";
-            findText.Name = "findText";
-            findText.Resizable = DataGridViewTriState.False;
-            findText.Width = 170;
+            searchKey.HeaderText = "Search Key";
+            searchKey.Name = "searchKey";
+            searchKey.Resizable = DataGridViewTriState.True;
+            searchKey.Width = 150;
+            // 
+            // endKey
+            // 
+            endKey.HeaderText = "End Key";
+            endKey.Name = "endKey";
+            endKey.Width = 150;
             // 
             // type
             // 
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            type.DefaultCellStyle = dataGridViewCellStyle2;
             type.HeaderText = "Type";
             type.Items.AddRange(new object[] { "Text", "Number" });
             type.Name = "type";
             type.Resizable = DataGridViewTriState.False;
             type.SortMode = DataGridViewColumnSortMode.Automatic;
+            type.Width = 110;
             // 
             // btnDataSeparation
             // 
             btnDataSeparation.Image = Properties.Resources.icon_execute_16x16;
-            btnDataSeparation.Location = new Point(406, 18);
+            btnDataSeparation.Location = new Point(427, 19);
             btnDataSeparation.Name = "btnDataSeparation";
             btnDataSeparation.Size = new Size(24, 24);
             btnDataSeparation.TabIndex = 4;
@@ -113,7 +157,7 @@
             // btnReload
             // 
             btnReload.Image = Properties.Resources.icon_reload_16x16;
-            btnReload.Location = new Point(280, 18);
+            btnReload.Location = new Point(280, 19);
             btnReload.Name = "btnReload";
             btnReload.Size = new Size(24, 24);
             btnReload.TabIndex = 3;
@@ -149,39 +193,73 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lblNumFile);
             groupBox1.Controls.Add(txtListFile);
-            groupBox1.Location = new Point(9, 263);
+            groupBox1.Location = new Point(9, 189);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(563, 83);
+            groupBox1.Size = new Size(460, 130);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "List File PDF";
             // 
+            // lblNumFile
+            // 
+            lblNumFile.AutoSize = true;
+            lblNumFile.Location = new Point(283, 108);
+            lblNumFile.Name = "lblNumFile";
+            lblNumFile.Size = new Size(148, 17);
+            lblNumFile.TabIndex = 7;
+            lblNumFile.Text = "Number of pdf files:";
+            lblNumFile.TextAlign = ContentAlignment.MiddleRight;
+            lblNumFile.Visible = false;
+            // 
             // txtListFile
             // 
-            txtListFile.Dock = DockStyle.Fill;
-            txtListFile.Location = new Point(3, 20);
+            txtListFile.Location = new Point(10, 18);
             txtListFile.Name = "txtListFile";
-            txtListFile.Size = new Size(557, 60);
+            txtListFile.ReadOnly = true;
+            txtListFile.Size = new Size(440, 88);
             txtListFile.TabIndex = 0;
             txtListFile.Text = "";
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnClear);
+            groupBox2.Controls.Add(btnCopy);
             groupBox2.Controls.Add(txtResult);
-            groupBox2.Location = new Point(8, 376);
+            groupBox2.Location = new Point(9, 319);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(563, 93);
+            groupBox2.Size = new Size(460, 148);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Result";
             // 
+            // btnClear
+            // 
+            btnClear.Image = Properties.Resources.icon_clear_16x16;
+            btnClear.Location = new Point(427, 114);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(24, 24);
+            btnClear.TabIndex = 8;
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
+            // btnCopy
+            // 
+            btnCopy.Image = Properties.Resources.icon_copy_16x16;
+            btnCopy.Location = new Point(399, 114);
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new Size(24, 24);
+            btnCopy.TabIndex = 7;
+            btnCopy.UseVisualStyleBackColor = true;
+            btnCopy.Click += btnCopy_Click;
+            // 
             // txtResult
             // 
-            txtResult.Dock = DockStyle.Fill;
-            txtResult.Location = new Point(3, 20);
+            txtResult.Location = new Point(10, 18);
             txtResult.Name = "txtResult";
-            txtResult.Size = new Size(557, 70);
+            txtResult.ReadOnly = true;
+            txtResult.Size = new Size(440, 88);
             txtResult.TabIndex = 0;
             txtResult.Text = "";
             // 
@@ -189,11 +267,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(575, 480);
+            ClientSize = new Size(478, 475);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(groupSetting);
             Font = new Font("Verdana", 10F);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Main";
             Text = "Tool PDF";
             Load += Main_Load;
@@ -201,6 +280,7 @@
             groupSetting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSetting).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -218,7 +298,12 @@
         private GroupBox groupBox2;
         private RichTextBox txtResult;
         private DataGridView dataGridViewSetting;
-        private DataGridViewTextBoxColumn findText;
+        private Button btnSave;
+        private Label lblNumFile;
+        private Button btnClear;
+        private Button btnCopy;
+        private DataGridViewTextBoxColumn searchKey;
+        private DataGridViewTextBoxColumn endKey;
         private DataGridViewComboBoxColumn type;
     }
 }
