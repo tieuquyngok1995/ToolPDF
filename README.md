@@ -32,7 +32,7 @@ List any required software or tools:
 
 ## Installation
 
-Download the .exe file from the v1.0.0 release and run it directly — no installation is required.
+[⬇️ Download the .exe file (v1.0.0)](https://github.com/tieuquyngok1995/ToolPDF/releases/download/v1.0.0/ToolPDF.exe) and run it directly — no installation is required.
 
 ⚠️ If Windows shows a security warning, right-click the file → select Properties → check Unblock, then click OK.
 Make sure you have permission to access the folders you plan to process.
