@@ -63,6 +63,26 @@ namespace ToolPDF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_clear_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("icon_clear_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_copy_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("icon_copy_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_execute_16x16 {
             get {
                 object obj = ResourceManager.GetObject("icon_execute_16x16", resourceCulture);
@@ -86,6 +106,16 @@ namespace ToolPDF.Properties {
         internal static System.Drawing.Bitmap icon_reload_16x16 {
             get {
                 object obj = ResourceManager.GetObject("icon_reload_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_save_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("icon_save_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
