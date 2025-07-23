@@ -71,7 +71,7 @@ Fill in the settings table with the following columns:
 
 | Column Name    | Description                                                                                            |
 | -------------- | ------------------------------------------------------------------------------------------------------ |
-| **Search Key** | The keyword used to locate values within the PDF content.                                              |
+| **Search Key** | The keyword used to locate values within the PDF content (No space end).                               |
 | **End Key**    | If the extracted value contains extra text, enter the excess portion here to be automatically removed. |
 | **Type**       | Specify the expected data type: `Text` or `Number`.                                                    |
 
