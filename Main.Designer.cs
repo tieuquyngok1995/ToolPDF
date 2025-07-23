@@ -30,9 +30,10 @@ namespace ToolPDF
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             groupSetting = new GroupBox();
             btnSave = new Button();
@@ -52,10 +53,14 @@ namespace ToolPDF
             btnClear = new Button();
             btnCopy = new Button();
             txtResult = new RichTextBox();
+            contextMenuSetting = new ContextMenuStrip(components);
+            addRow = new ToolStripMenuItem();
+            deleteRow = new ToolStripMenuItem();
             groupSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSetting).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            contextMenuSetting.SuspendLayout();
             SuspendLayout();
             // 
             // groupSetting
@@ -90,25 +95,25 @@ namespace ToolPDF
             dataGridViewSetting.AllowUserToResizeRows = false;
             dataGridViewSetting.BackgroundColor = SystemColors.Control;
             dataGridViewSetting.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 10F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Verdana", 10F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewSetting.ColumnHeadersHeight = 24;
             dataGridViewSetting.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewSetting.Columns.AddRange(new DataGridViewColumn[] { searchKey, endKey, type });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Verdana", 10F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewSetting.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Verdana", 10F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewSetting.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewSetting.Location = new Point(10, 51);
             dataGridViewSetting.MultiSelect = false;
             dataGridViewSetting.Name = "dataGridViewSetting";
@@ -119,6 +124,7 @@ namespace ToolPDF
             dataGridViewSetting.Size = new Size(440, 126);
             dataGridViewSetting.TabIndex = 5;
             dataGridViewSetting.RowsAdded += dataGridViewSetting_RowsAdded;
+            dataGridViewSetting.MouseDown += dataGridViewSetting_MouseDown;
             // 
             // searchKey
             // 
@@ -135,8 +141,8 @@ namespace ToolPDF
             // 
             // type
             // 
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            type.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            type.DefaultCellStyle = dataGridViewCellStyle5;
             type.HeaderText = "Type";
             type.Items.AddRange(new object[] { "Text", "Number" });
             type.Name = "type";
@@ -263,6 +269,27 @@ namespace ToolPDF
             txtResult.TabIndex = 0;
             txtResult.Text = "";
             // 
+            // contextMenuSetting
+            // 
+            contextMenuSetting.Items.AddRange(new ToolStripItem[] { addRow, deleteRow });
+            contextMenuSetting.Name = "contextMenuSetting";
+            contextMenuSetting.Size = new Size(181, 70);
+
+            // 
+            // addRow
+            // 
+            addRow.Name = "addRow";
+            addRow.Size = new Size(180, 22);
+            addRow.Text = "Add row";
+            addRow.Click += new System.EventHandler(this.addRowMenu_Click);
+            // 
+            // deleteRow
+            // 
+            deleteRow.Name = "deleteRow";
+            deleteRow.Size = new Size(180, 22);
+            deleteRow.Text = "Delete";
+            deleteRow.Click += new System.EventHandler(this.deleteRowMenu_Click);
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
@@ -282,6 +309,7 @@ namespace ToolPDF
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
+            contextMenuSetting.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -305,5 +333,8 @@ namespace ToolPDF
         private DataGridViewTextBoxColumn searchKey;
         private DataGridViewTextBoxColumn endKey;
         private DataGridViewComboBoxColumn type;
+        private ContextMenuStrip contextMenuSetting;
+        private ToolStripMenuItem addRow;
+        private ToolStripMenuItem deleteRow;
     }
 }

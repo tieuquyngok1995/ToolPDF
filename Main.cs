@@ -147,6 +147,46 @@
             AdjustLastColumnWidth();
         }
 
+        private void dataGridViewSetting_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hit = dataGridViewSetting.HitTest(e.X, e.Y);
+                if (hit.RowIndex >= 0)
+                {
+                    dataGridViewSetting.ClearSelection();
+                    dataGridViewSetting.Rows[hit.RowIndex].Selected = true;
+
+                    contextMenuSetting.Show(dataGridViewSetting, e.Location);
+                }
+            }
+        }
+        private void addRowMenu_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSetting.SelectedRows.Count > 1)
+            {
+                int selectedRowIndex = dataGridViewSetting.SelectedRows[0].Index;
+                dataGridViewSetting.Rows.Insert(selectedRowIndex + 1, 1);
+            }
+            else
+            {
+                dataGridViewSetting.Rows.Add();
+            }
+        }
+
+        private void deleteRowMenu_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSetting.Rows.Count == 1 || dataGridViewSetting.Rows.Count - 1 == dataGridViewSetting.SelectedRows[0].Index) return;
+
+            if (dataGridViewSetting.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridViewSetting.SelectedRows)
+                {
+                    dataGridViewSetting.Rows.Remove(row);
+                }
+            }
+        }
+
         /// <summary>
         /// Handles the Click event of the <see cref="btnSave"/> button.
         /// Saves the current grid settings or application state, typically to a configuration file or persistent storage.
